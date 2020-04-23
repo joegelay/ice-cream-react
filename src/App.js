@@ -1,26 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import IceCreamContainer from './IceCreamContainer'
+import IceCreamChoice from './IceCreamChoice'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends React.Component {
+
+  state = {
+    iceCreamFlavor: "Choose an ice cream above!"
+  }
+
+  setIceCreamFlavor = (newFlavor) => {
+    this.setState({
+      iceCreamFlavor: newFlavor
+    })
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <h1>Ice Cream Shop</h1>
+        <h2>Select an ice cream flavor:</h2>
+        <IceCreamContainer setIceCreamFlavor={this.setIceCreamFlavor}/>
+        <h2>Your Ice Cream...</h2>
+        <IceCreamChoice iceCreamFlavor={this.state.iceCreamFlavor} />
+      </div>
+    );
+  }
 }
 
-export default App;
+
